@@ -1,0 +1,21 @@
+.filterDiv {
+  position: absolute;
+  bottom: -100px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: space-around;
+  box-shadow: rgba(17, 0, 255, 0.56) 0px 22px 70px 4px;
+  list-style-type: none !important;
+}
+
+.filterDiv select, .filterDiv input[type="date"] {
+  height: 80px !important;
+  width: 270px !important;
+}
+
+
+.filterDiv input[type="checkbox"] {
+  margin-right: 5px !important;
+  background: #000 !important;
+}
