@@ -1,0 +1,266 @@
+<form
+	action="/create"
+	method="POST"
+	class="w-50 mx-auto mt-4 bg-dark text-dark border border-2 p-3 rounded-3"
+	style="background: rgba(13, 109, 253, 0.7) !important;"
+	enctype="multipart/form-data"
+>
+	<div class="w-100">
+		<h4 class="mb-4">Vaqt va yo'nalishni tanlang</h4>
+		<div class="d-flex gap-3">
+			<div class="form-floating mb-3">
+				<input
+					type="date"
+					class="form-control"
+					id="floatingInput"
+					placeholder="name@example.com"
+					name="date"
+				/>
+				<label for="floatingInput">Sanani tanlang</label>
+			</div>
+			<div class="form-floating mb-3 w-25">
+				<input
+					type="time"
+					class="form-control"
+					id="floatingInput"
+					placeholder="name@example.com"
+					name="time"
+				/>
+				<label for="floatingInput">Vaqtini tanlang</label>
+			</div>
+		</div>
+		<div class="d-flex gap-3">
+			<select
+				class="w-50 form-select form-select-md mb-3"
+				aria-label=".form-select-lg example"
+				name="route"
+				onchange="catch_value_types()"
+				id="route"
+			>
+				<option value="it">Information Technologies</option>
+				<option value="smm">SMM</option>
+				<option value="dizayn">Dizayn</option>
+			</select>
+			<select
+				class="w-50 form-select form-select-md mb-3"
+				aria-label=".form-select-lg example"
+				name="initRoute"
+				id="initRoute"
+			>
+				<option value="">Ichki bo'limlar</option>
+				<option class="it" value="nodejs">NodeJS</option>
+				<option class="it" value="java">Java</option>
+				<option class="it" value="go">Go</option>
+				<option class="it" value="flutter">Flutter</option>
+				<option class="it" value="php">PHP</option>
+				<option class="smm" value="smmpro">SMM PRO</option>
+				<option class="smm" value="smm">smm</option>
+				<option class="dizayn" value="moushn">Moush dizayn</option>
+				<option class="dizayn" value="grafik">Grafik dizayn</option>
+				<option class="dizayn" value="web">Web dizayn</option>
+			</select>
+		</div>
+		<div class="d-flex gap-3">
+			<input type="checkbox" name="isOnline" />
+			<div class="form-floating mb-3 w-50">
+				<input
+					type="text"
+					class="form-control"
+					id="floatingInput"
+					placeholder="name@example.com"
+					name="link"
+				/>
+				<label for="floatingInput">Link kiriting</label>
+			</div>
+		</div>
+	</div>
+	<div class="w-100 mt-5">
+		<h4 class="mb-4">Tashkilotchi</h4>
+		<div class="d-flex gap-3">
+			<div class="form-check">
+				<input
+					class="form-check-input"
+					type="radio"
+					name="shaxs"
+					id="exampleRadios1"
+					onchange="handleShaxs(this)"
+					value="jismoniy"
+				/>
+				<label class="form-check-label" for="exampleRadios1">
+					Jismoniy shaxs
+				</label>
+			</div>
+			<div class="form-check">
+				<input
+					class="form-check-input"
+					type="radio"
+					name="shaxs"
+					id="exampleRadios2"
+					onchange="handleShaxs(this)"
+					value="yuridik"
+					checked
+				/>
+				<label class="form-check-label" for="exampleRadios2">
+					Yuridik shaxs
+				</label>
+			</div>
+		</div>
+		{{! YURIDIK SHAXS }}
+		<div id="yuridik">
+			<div class="d-flex gap-3 mt-2">
+				<div class="form-floating w-50 mb-3">
+					<input
+						type="text"
+						class="form-control"
+						id="floatingInput"
+						placeholder="name@example.com"
+						name="yuridikNomi"
+					/>
+					<label for="floatingInput">Yuridik nomi</label>
+				</div>
+				<div class="form-floating w-50">
+					<input
+						type="text"
+						class="form-control"
+						id="floatingPassword"
+						placeholder="Password"
+						name="yuridikFullname"
+					/>
+					<label for="floatingPassword">Ismi sharif</label>
+				</div>
+			</div>
+			<div class="d-flex gap-3 mt-2">
+				<div class="form-floating w-50 mb-3">
+					<input
+						type="text"
+						class="form-control"
+						id="floatingInput"
+						placeholder="name@example.com"
+						name="professiya"
+					/>
+					<label for="floatingInput">Professiya</label>
+				</div>
+				<div class="form-floating w-50">
+					<input
+						type="number"
+						class="form-control"
+						id="floatingPassword"
+						placeholder="Password"
+						name="phone"
+					/>
+					<label for="floatingPassword">Telefon raqami</label>
+				</div>
+			</div>
+			<div class="d-flex gap-3 mt-2">
+				<div class="form-floating w-50 mb-3">
+					<input
+						type="number"
+						class="form-control"
+						id="floatingInput"
+						placeholder="name@example.com"
+						name="phoneNumber"
+					/>
+					<label for="floatingInput">Qo'shimcha telefon raqami</label>
+				</div>
+			</div>
+		</div>
+		{{! JISMONIY SHAXS }}
+		<div class="d-none" id="jismoniy">
+			<div class="d-flex gap-3 mt-2">
+				<div class="form-floating w-50 mb-3">
+					<input
+						type="text"
+						class="form-control"
+						id="floatingInput"
+						placeholder="name@example.com"
+						name="jismoniyFullname"
+					/>
+					<label for="floatingInput">Ismi Sharifi</label>
+				</div>
+				<div class="form-floating w-50">
+					<input
+						type="text"
+						class="form-control"
+						id="floatingPassword"
+						placeholder="Password"
+						name="jismoniyProfessiya"
+					/>
+					<label for="floatingPassword">Professiya</label>
+				</div>
+			</div>
+			<div class="d-flex gap-3 mt-2">
+				<div class="form-floating w-50 mb-3">
+					<input
+						type="number"
+						class="form-control"
+						id="floatingInput"
+						placeholder="name@example.com"
+						name="jismoniyPhone"
+					/>
+					<label for="floatingInput">Telefon raqami</label>
+				</div>
+				<div class="form-floating w-50">
+					<input
+						type="number"
+						class="form-control"
+						id="floatingPassword"
+						placeholder="Password"
+						name="jismoniyPhone2"
+					/>
+					<label for="floatingPassword">Qo'shimcha telefon raqami</label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="w-100 mt-5">
+		<h4 class="mb-4">Post</h4>
+		<div class="d-flex gap-3">
+			<div class="form-floating w-100 mb-3">
+				<input
+					type="text"
+					class="form-control"
+					id="floatingInput"
+					placeholder="name@example.com"
+					name="postTitle"
+				/>
+				<label for="floatingInput">MAVZUNI SARLAVHASI</label>
+			</div>
+		</div>
+		<div class="d-flex gap-3">
+			<div class="form-floating w-100 mb-3">
+				<input
+					type="text"
+					class="form-control"
+					id="floatingInput"
+					placeholder="name@example.com"
+					name="description"
+				/>
+				<label for="floatingInput">Description</label>
+			</div>
+		</div>
+		<div class="d-flex gap-3">
+			<div class="form-floating w-100 mb-3">
+				<input
+					type="file"
+					class="form-input"
+					id="floatingInput"
+					placeholder="name@example.com"
+					name="postPhoto"
+				/>
+			</div>
+		</div>
+		<div class="form-floating">
+			<textarea
+				class="form-control h-25"
+				placeholder="Leave a comment here"
+				id="floatingTextarea"
+				name="postMatni"
+			></textarea>
+			<label for="floatingTextarea">Mavzuni matni</label>
+		</div>
+	</div>
+	<div class="w-100 text-center">
+		<button type="submit" class="w-25 btn btn-primary mt-3 m-auto">E'lonni
+			yuborish</button>
+	</div>
+</form>

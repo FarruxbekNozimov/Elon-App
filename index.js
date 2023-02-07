@@ -1,11 +1,13 @@
-import express from "express";
+const express = require("express");
+const { create } = require("express-handlebars");
 const app = express();
-const PORT = 3333;
-import { create } from "express-handlebars";
+const fileUpload = require("express-fileupload");
 
 // IMPORT ROUTES
-import UserRoutes from "./routes/user.js";
+const UserRoutes = require("./routes/posts.js");
 
+app.use(fileUpload());
+app.use(express.urlencoded({ extended: true }));
 const hbs = create({
 	defaultLayout: "main",
 	extname: "hbs",
@@ -18,10 +20,10 @@ app.use(express.static("public"));
 app.engine("hbs", hbs.engine);
 app.set("view engine", "hbs");
 app.set("views", "./views");
-app.use(express.urlencoded({ extented: true }));
 
 app.use(UserRoutes);
 
+const PORT = 3333;
 app.listen(PORT, (err) => {
 	if (err) console.log(err);
 	else console.log("Server is running on port", PORT);

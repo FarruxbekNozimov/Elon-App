@@ -1,0 +1,30 @@
+[
+  {
+    "date": "2022-07-17",
+    "time": "07:17",
+    "route": "it",
+    "isOnline": "on",
+    "initRoute": "nodejs",
+    "link": "Hello how are you",
+    "postTitle": "SalomSalom",
+    "description": "Helllo Slaom",
+    "postMatni": "SalomSalomSalomSalomSalomSalomSalom",
+    "yuridikNomi": "1234",
+    "yuridikFullname": "Salom",
+    "postPhoto": "1675779498484.png"
+  },
+  {
+    "date": "2022-07-17",
+    "time": "07:17",
+    "route": "it",
+    "isOnline": "on",
+    "initRoute": "nodejs",
+    "link": "Hello how are you",
+    "postTitle": "SalomSalom",
+    "description": "Helllo Slaom",
+    "postMatni": "SalomSalomSalomSalomSalomSalomSalom",
+    "yuridikNomi": "1234",
+    "yuridikFullname": "Salom",
+    "postPhoto": "1675779693864.png"
+  }
+]
