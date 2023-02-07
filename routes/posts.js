@@ -9,7 +9,7 @@ router.get("/create", (req, res) => {
 	res.render("create", {});
 });
 
-router.post("/create", async (req, res) => {
+router.post("/create", (req, res) => {
 	let posts = jsonReader("posts");
 	let {
 		date,
@@ -19,18 +19,16 @@ router.post("/create", async (req, res) => {
 		isOnline,
 		link,
 		shaxs,
+		ismSharif,
 		yuridikNomi,
-		yuridikFullname,
 		yuridikProfessiya,
 		yuridikPhone,
 		yuridikPhoneNumber,
-		jismoniyFullname,
 		jismoniyProfessiya,
 		jismoniyPhone,
 		jismoniyPhone2,
 		postTitle,
 		description,
-		postPhoto,
 		postMatni,
 	} = req.body;
 	console.log(req.body);
@@ -57,12 +55,13 @@ router.post("/create", async (req, res) => {
 		postTitle,
 		description,
 		postMatni,
+		tasdiqlangan: "false",
 	};
 	if (shaxs == "yuridik") {
 		post = {
 			...post,
 			yuridikNomi,
-			yuridikFullname,
+			ismSharif,
 			yuridikProfessiya,
 			yuridikPhone,
 			yuridikPhoneNumber,
@@ -70,7 +69,7 @@ router.post("/create", async (req, res) => {
 	} else {
 		post = {
 			...post,
-			jismoniyFullname,
+			ismSharif,
 			jismoniyProfessiya,
 			jismoniyPhone,
 			jismoniyPhone2,
@@ -81,13 +80,20 @@ router.post("/create", async (req, res) => {
 	post.postPhoto = imgName;
 	posts.push(post);
 
-	await jsonWriter("posts", posts);
+	jsonWriter("posts", posts);
 	res.redirect("/");
 });
 // GET POSTS
 
 router.get("/", (req, res) => {
-	res.render("index", {});
+	let { date, route, initRoute, isOnline, ismSharif } = req.query;
+	let posts = jsonReader("posts");
+	// let res = D
+	for (let i in posts) {
+	}
+	res.render("index", {
+		posts,
+	});
 });
 
 // GET ONE POST
