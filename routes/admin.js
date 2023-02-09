@@ -41,4 +41,16 @@ router.get("/admin", AuthMiddleware, (req, res) => {
 	});
 });
 
+router.get("/tasdiqlash/:id", AuthMiddleware, (req, res) => {
+	let postId = req.params.id;
+	let posts = jsonReader("posts");
+	for (let i in posts) {
+		if (posts[i].id == postId) {
+			posts[i].tasdiqlangan = true;
+		}
+	}
+	jsonWriter("posts", posts);
+	res.redirect("/admin");
+});
+
 module.exports = router;

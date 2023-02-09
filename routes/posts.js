@@ -11,7 +11,6 @@ router.get("/create", (req, res) => {
 
 router.post("/create", (req, res) => {
 	let posts = jsonReader("posts");
-	req.body.ismSharif = req.body.ismSharif[0] || req.body.ismSharif[1];
 	req.body.isOnline = req.body.isOnline ? "online" : "offline";
 	req.body.ismSharif = req.body.ismSharif || req.body.ismSharif1;
 	let {
@@ -35,11 +34,13 @@ router.post("/create", (req, res) => {
 		description,
 		postMatni,
 	} = req.body;
+	console.log(req.body);
 	if (!req.files || !date || !time || !route || !initRoute || !link) {
 		console.log("To'ldir");
 		return res.render("create", {});
 	}
 	let post = {
+		id: Date.now().toString(),
 		date,
 		time,
 		ismSharif: ismSharif ? ismSharif : ismSharif1,
@@ -96,7 +97,7 @@ router.get("/", (req, res) => {
 			}
 		}
 	}
-
+	console.log(result, posts);
 	res.render("index", {
 		posts,
 		filters: result.length ? result : posts,

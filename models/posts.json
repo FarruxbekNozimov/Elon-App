@@ -1,19 +1,21 @@
 [
-	{
-		"date": "2023-02-18",
-		"time": "02:12",
-		"ismSharif": "asdfasdf",
-		"route": "smm",
-		"isOnline": "online",
-		"initRoute": "smmpro",
-		"link": "Hello how are you",
-		"postTitle": "Slaomsaloamslm",
-		"description": "qo3hqopwehrqpoiweh",
-		"postMatni": "asdfsmdfasdfasd",
-		"tasdiqlangan": false,
-		"jismoniyProfessiya": "qwreqwer",
-		"jismoniyPhone": "123341234",
-		"jismoniyPhone2": "1431234",
-		"postPhoto": "1675919594833.png"
-	}
+  {
+    "id": "1675927395324",
+    "date": "2023-02-14",
+    "time": "16:22",
+    "ismSharif": "IsmSharifbek",
+    "route": "dizayn",
+    "isOnline": "online",
+    "initRoute": "grafik",
+    "link": "qewrqjwe;lkjr",
+    "postTitle": "Slaomsaloamslm",
+    "description": "Salom hammaga !!!!",
+    "postMatni": "qjhwoeorhqlwj;l",
+    "tasdiqlangan": true,
+    "yuridikNomi": "nomiYuridik",
+    "yuridikProfessiya": "aksljdfhaskljdfh",
+    "yuridikPhone": "8764545",
+    "yuridikPhoneNumber": "654123",
+    "postPhoto": "1675927395325.png"
+  }
 ]

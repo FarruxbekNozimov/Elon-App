@@ -1,0 +1,46 @@
+<div class="w-100" style="padding:10px;padding-left: 290px;">
+
+	<div class="w-100 cards p-4">
+		{{#each posts}}
+			{{#unless tasdiqlangan}}
+				<div class="border-primary card mb-4">
+					<div class="card-body">
+						<div class="d-flex justify-content-between">
+							<h3 class="card-text">{{description}}</h3>
+							<div class="btns">
+								<a
+									href="/bekor"
+									class="btn btn-gray"
+									style="background:#ccc;"
+								>Bekor qilish</a>
+								<a
+									href="/tasdiqlash/{{id}}"
+									class="btn btn-primary"
+								>Tasdiqlash</a>
+							</div>
+						</div>
+						<div class="d-flex">
+							<span class="me-5 text-muted">{{ismSharif}}</span>
+							<span class="me-5 text-primary">
+								{{#if jismoniyPhone}}
+									{{jismoniyPhone}}
+								{{else}}
+									{{yuridikPhone}}
+								{{/if}}
+							</span>
+							<span class="me-5 text-primary">{{date}}</span>
+							<span class="me-5 text-primary">{{time}}</span>
+							<span class="me-5 text-primary">
+								{{#if jismoniyProfessiya}}
+									{{jismoniyProfessiya}}
+								{{else}}
+									{{yuridikProfessiya}}
+								{{/if}}
+							</span>
+						</div>
+					</div>
+				</div>
+			{{/unless}}
+		{{/each}}
+	</div>
+</div>
