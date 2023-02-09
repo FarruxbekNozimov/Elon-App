@@ -1,0 +1,32 @@
+<main class="form-signin w-75 m-auto">
+	<form
+		action="/admin/auth"
+		method="POST"
+		class="w-50 m-auto mt-5 border p-3 bg-info rounded-4"
+	>
+		<h1 class="h3 mb-3 fw-normal text-center">Tizimga kirish</h1>
+		<div class="form-floating mb-3">
+			<input
+				type="text"
+				class="form-control"
+				id="floatingInput"
+				placeholder="name@example.com"
+				name="login"
+			/>
+			<label for="floatingInput">Login</label>
+		</div>
+		<div class="form-floating mb-3">
+			<input
+				type="password"
+				class="form-control"
+				id="floatingPassword"
+				placeholder="Password"
+				name="password"
+			/>
+			<label for="floatingPassword">Password</label>
+		</div>
+		<div class="w-100 text-center">
+			<button class="w-25 btn btn-primary" type="submit">Kirish</button>
+		</div>
+	</form>
+</main>

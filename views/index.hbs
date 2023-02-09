@@ -38,8 +38,8 @@
 					name="isOnline"
 				>
 					<option value="">Online/Offline</option>
-					<option value="online">Online</option>
-					<option value="offline">Offline</option>
+					<option value="on">Online</option>
+					<option value="off">Offline</option>
 				</select>
 				<select
 					name="ismSharif"
@@ -60,27 +60,34 @@
 		<div class="container">
 
 			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-				{{#each posts}}
-					<div class="col">
-						<div class="card shadow-sm">
-							<img src="/img/{{postPhoto}}" alt="" />
-							<div class="card-body">
-								<h4 class="card-text">{{postTitle}}</h4>
-								<div class="d-flex">
-									<div class="row ms-2">
-										<span>👤 {{yuridikNomi}}</span>
-										<span>📅 {{date}}</span>
-										<span>🌐 {{isOnline}}</span>
-									</div>
-									<div class="row">
-										<span>📈 {{yuridikProfessiya}}</span>
-										<span>⏰ {{time}}</span>
-										<span>👁 250</span>
+				{{#each filters}}
+					{{#if tasdiqlangan}}
+						<div class="col">
+							<div class="card shadow-sm">
+								<img src="/img/{{postPhoto}}" alt="" height="300px" />
+								<div class="card-body">
+									<h4 class="card-text">{{postTitle}}</h4>
+									<div class="d-flex">
+										<div class="row ms-2">
+											<span>👤 {{ismSharif}}</span>
+											<span>📅 {{date}}</span>
+											<span>🌐 {{isOnline}}</span>
+										</div>
+										<div class="row">
+											<span>📈
+												{{#if yuridikProfessiya}}
+													{{yuridikProfessiya}}
+												{{else}}
+													{{jismoniyProfessiya}}
+												{{/if}}</span>
+											<span>⏰ {{time}}</span>
+											<span>👁 250</span>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
+					{{/if}}
 				{{/each}}
 			</div>
 		</div>

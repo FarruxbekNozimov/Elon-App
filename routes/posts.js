@@ -11,6 +11,9 @@ router.get("/create", (req, res) => {
 
 router.post("/create", (req, res) => {
 	let posts = jsonReader("posts");
+	req.body.ismSharif = req.body.ismSharif[0] || req.body.ismSharif[1];
+	req.body.isOnline = req.body.isOnline ? "online" : "offline";
+	req.body.ismSharif = req.body.ismSharif || req.body.ismSharif1;
 	let {
 		date,
 		time,
@@ -20,6 +23,7 @@ router.post("/create", (req, res) => {
 		link,
 		shaxs,
 		ismSharif,
+		ismSharif1,
 		yuridikNomi,
 		yuridikProfessiya,
 		yuridikPhone,
@@ -31,22 +35,14 @@ router.post("/create", (req, res) => {
 		description,
 		postMatni,
 	} = req.body;
-	console.log(req.body);
-	if (
-		!req.files ||
-		!date ||
-		!time ||
-		!route ||
-		!isOnline ||
-		!initRoute ||
-		!isOnline ||
-		!link
-	) {
+	if (!req.files || !date || !time || !route || !initRoute || !link) {
+		console.log("To'ldir");
 		return res.render("create", {});
 	}
 	let post = {
 		date,
 		time,
+		ismSharif: ismSharif ? ismSharif : ismSharif1,
 		route,
 		isOnline,
 		initRoute,
@@ -55,13 +51,12 @@ router.post("/create", (req, res) => {
 		postTitle,
 		description,
 		postMatni,
-		tasdiqlangan: "false",
+		tasdiqlangan: false,
 	};
 	if (shaxs == "yuridik") {
 		post = {
 			...post,
 			yuridikNomi,
-			ismSharif,
 			yuridikProfessiya,
 			yuridikPhone,
 			yuridikPhoneNumber,
@@ -69,7 +64,6 @@ router.post("/create", (req, res) => {
 	} else {
 		post = {
 			...post,
-			ismSharif,
 			jismoniyProfessiya,
 			jismoniyPhone,
 			jismoniyPhone2,
@@ -88,14 +82,25 @@ router.post("/create", (req, res) => {
 router.get("/", (req, res) => {
 	let { date, route, initRoute, isOnline, ismSharif } = req.query;
 	let posts = jsonReader("posts");
-	// let res = D
-	for (let i in posts) {
+	let result = [];
+	if (req.query) {
+		for (let i in posts) {
+			if (
+				posts[i].date == date ||
+				posts[i].route == route ||
+				posts[i].initRoute == initRoute ||
+				posts[i].isOnline == isOnline ||
+				posts[i].ismSharif == ismSharif
+			) {
+				result.push(posts[i]);
+			}
+		}
 	}
+
 	res.render("index", {
 		posts,
+		filters: result.length ? result : posts,
 	});
 });
-
-// GET ONE POST
 
 module.exports = router;

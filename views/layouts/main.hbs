@@ -1,7 +1,11 @@
 <html lang="en">
   {{>head}}
 	<body>
-		{{>header}}
+		{{#if admin}}
+			{{>adminSidebar}}
+		{{else}}
+			{{>header}}
+		{{/if}}
 		{{{body}}}
     {{>footer}}
 		<br><br><br>
